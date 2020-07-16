@@ -1,3 +1,13 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
 h1 {
   color: green;
+  font-weight: bold;
+  font-size: 4rem;
+  padding: 100px 0 50px 0;
+}
+button {
+  margin: 5px 10px;
 }
