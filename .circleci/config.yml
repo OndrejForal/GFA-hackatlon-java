@@ -1,0 +1,44 @@
+version: 2
+jobs:
+  build:
+    environment:
+      # Configure the JVM and Gradle to avoid OOM errors
+      _JAVA_OPTIONS: "-Xmx3g"
+      GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.workers.max=2"
+    docker:
+      - image: cimg/openjdk:14.0
+    steps:
+      - checkout
+      - run:
+          name: Chmod permissions #if permission for Gradlew Dependencies fail, use this.
+          command: sudo chmod +x first_steps/gradlew
+      - run:
+          name: Build
+          command: |
+            cd first_steps
+            ./gradlew build -x test
+  deploy:
+    docker:
+      - image: buildpack-deps:trusty
+    steps:
+      - checkout
+      - run:
+          name: Deploy Develop to Heroku
+          command: |
+            git subtree push --prefix first_steps https://heroku:b67fb522-9137-48e8-af8e-4a59234f7727@git.heroku.com/first-steps-rascals.git master
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+    - build:
+        filters:
+          branches:
+            ignore: master
+    - deploy:
+        requires:
+          - build
+        filters:
+          branches:
+            only:
+              - Develop
+
