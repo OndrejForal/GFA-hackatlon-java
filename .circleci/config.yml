@@ -51,10 +51,7 @@ workflows:
         filters:
           branches:
             ignore: master
-    - tests:
-        requires:
-          - build
-    - deploy:
+     - deploy:
         requires:
           - build
           - tests
