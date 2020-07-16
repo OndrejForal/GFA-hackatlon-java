@@ -42,7 +42,7 @@ jobs:
       - run:
           name: Deploy develop to Heroku
           command: |
-            git subtree push --prefix first_steps https://heroku:b67fb522-9137-48e8-af8e-4a59234f7727@git.heroku.com/rascal-tribes.git master
+            git subtree push --prefix first_steps https://heroku:b67fb522-9137-48e8-af8e-4a59234f7727@git.heroku.com/first-steps-rascal.git master
 
 workflows:
   version: 2
