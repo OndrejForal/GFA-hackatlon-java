@@ -1,4 +1,4 @@
-package hackatlon_java.first_steps;
+package hackatlon_java.first_steps.Controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
