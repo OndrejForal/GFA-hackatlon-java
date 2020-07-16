@@ -1,9 +1,9 @@
 body, html {
   font-family: 'Montserrat', sans-serif;
-  color: white;
   height: 100%;
 }
 
+/* Index html */
 h1 {
   color: white;
   font-weight: bold;
@@ -24,24 +24,37 @@ ul {
   font-size: 1.2rem;
   border-radius: 20px;
   list-style-type: none;
-  }
+  color: white;
+}
 
-  li {
-    padding: 5px;
-  }
+li {
+  padding: 5px;
+}
 
-  span {
-    font-weight: bold;
-  }
+span {
+  font-weight: bold;
+}
+
+.quiz-button {
+  margin-top: 2%;
+}
 
 #intro {
+  padding-top: 0;
+}
+
+/* Register html */
+.background-matrix {
   background-image: url("images/matrix2.jpg");
   height: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  padding-top: 15%;
 }
 
-.quiz-button {
-  margin-top: 2%;
+.register-form {
+  background-color: whitesmoke;
+  padding: 3%;
+  border-radius: 10px;
 }
