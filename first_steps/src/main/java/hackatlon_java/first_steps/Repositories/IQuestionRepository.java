@@ -9,5 +9,5 @@ import java.util.Collection;
 
 @Repository
 public interface IQuestionRepository extends CrudRepository<Question, Long> {
-    ArrayList<Question> findAllByID();
+    ArrayList<Question> findAll();
 }

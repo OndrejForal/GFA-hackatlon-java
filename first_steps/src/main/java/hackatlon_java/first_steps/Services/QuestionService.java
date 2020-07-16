@@ -16,7 +16,7 @@ public class QuestionService {
 
     public ArrayList<QuestionDTO> getQuestion(){
 
-        ArrayList<Question> q = questionRepository.findAllByID();
+        ArrayList<Question> q = questionRepository.findAll();
         ArrayList<QuestionDTO> result = new ArrayList<QuestionDTO>();
         for (var item:q
              ) {
