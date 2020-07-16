@@ -37,7 +37,6 @@ workflows:
     - deploy:
         requires:
           - build
-          - tests
         filters:
           branches:
             only:
