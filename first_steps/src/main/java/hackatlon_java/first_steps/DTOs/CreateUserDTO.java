@@ -9,24 +9,23 @@ import lombok.Setter;
 import javax.validation.constraints.NotBlank;
 
 
-@Getter
-@Setter
 public class CreateUserDTO {
 
     @NotBlank(message = "Username is required")
-    private String name;
+    public String name;
 
     @ValidEmail(message = "Valid Email is required")
-    private String email;
+    public String email;
 
     @NotBlank(message = "Password is required.")
     @ValidPassword
-    private String password;
-
+    public String password;
 
     public CreateUserDTO(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.password = password;
     }
+
+    public CreateUserDTO(){    }
 }

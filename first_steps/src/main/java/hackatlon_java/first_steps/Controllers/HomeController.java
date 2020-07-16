@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("")
 public class HomeController {
 
     private MasterService masterService;
@@ -33,7 +33,6 @@ public class HomeController {
     {
         masterService.createUser(userDTO);
         return new ResponseEntity("User created", HttpStatus.OK);
-    }
 
-  
+    }
 }
