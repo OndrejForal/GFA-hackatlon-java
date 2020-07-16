@@ -17,23 +17,6 @@ jobs:
           command: |
             cd first_steps
             ./gradlew build -x test
-  tests:
-    environment:
-      # Configure the JVM and Gradle to avoid OOM errors
-      _JAVA_OPTIONS: "-Xmx3g"
-      GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.workers.max=2"
-    docker:
-      - image: cimg/openjdk:14.0
-    steps:
-      - checkout
-      - run:
-          name: Chmod permissions #if permission for Gradlew Dependencies fail, use this.
-          command: sudo chmod +x first_steps/gradlew
-      - run:
-          name: Run tests
-          command: |
-            cd first_steps
-            ./gradlew test
   deploy:
     docker:
       - image: buildpack-deps:trusty
