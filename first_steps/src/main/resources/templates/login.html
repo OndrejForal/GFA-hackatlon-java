@@ -1,20 +1,46 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<!doctype html>
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
 <head>
-    <title>Spring Security Example </title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <!-- CSS -->
+  <link rel="stylesheet" href="../static/Style.css">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;900&display=swap" rel="stylesheet">
+
+  <title>Login User</title>
 </head>
+
 <body>
-<div th:if="${param.error}">
-    Invalid username and password.
-</div>
-<div th:if="${param.logout}">
-    You have been logged out.
-</div>
-<form th:action="@{/login}" method="post">
-    <div><label> User Name : <input type="text" name="username"/> </label></div>
-    <div><label> Password: <input type="password" name="password"/> </label></div>
-    <div><input type="submit" value="Sign In"/></div>
-</form>
+  <div class="background-matrix">
+    <div class="register-form container col-lg-5 col-md-7">
+      <form th:action="@{/login}" method="post">
+      <small th:if="${param.error}" class="form-text text-muted">
+        Invalid username and password.
+      </small>
+      <small th:if="${param.logout}" class="form-text text-muted">
+        You have been logged out.
+      </small>
+
+        <div class="form-group m-auto pt-2">
+          <label for="username">User Name</label>
+          <input type="text" name="username" id="username" class="form-control" required/>
+        </div>
+        <div class="form-group m-auto pt-2">
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" class="form-control" required/>
+        </div>
+        <div class="ml-auto pt-2">
+          <input type="submit" value="Login" class="btn btn-success ml-auto"/>
+        </div>
+      </form>
+    </div>
+  </div>
 </body>
+
 </html>
