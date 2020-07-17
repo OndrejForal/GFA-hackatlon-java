@@ -3,6 +3,7 @@ package hackatlon_java.first_steps.Controllers;
 import hackatlon_java.first_steps.DTOs.CreateUserDTO;
 import hackatlon_java.first_steps.DTOs.LoginRequest;
 import hackatlon_java.first_steps.Entities.AppUser;
+import hackatlon_java.first_steps.Entities.Post;
 import hackatlon_java.first_steps.Services.MasterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
