@@ -27,20 +27,12 @@
 
     <div class="container form-quiz">
 
-<<<<<<< HEAD
-      <form class="main" action="" method="">
-
-        <div class="flex pb-4">
-          <div class="main__question">
-            <h2 class="quiz-heading">{{actual-question}}</h2>
-=======
 
       <form class="main" action="/quiz" method="post">
 
         <div class="flex pb-4">
           <div class="main__question">
             <h2 th:text="${quizz != null} ? ${quizz.getQuestion()} : 'How do you feel today? :)'"> Default Question </h2>
->>>>>>> 872025cbbabfbfaa2f75de7c75e40b1b3aefada3
           </div>
 
           <div class="main__radio-group">
