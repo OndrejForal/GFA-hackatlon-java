@@ -42,9 +42,14 @@ public class HomeController {
         q=questionService.getQuestion();
     }
 
-    @GetMapping("index")
+    @GetMapping("/")
     public String home() {
         return "Index";
+    }
+
+    @GetMapping("index2")
+    public String home2() {
+        return "Index2";
     }
 
     @GetMapping("/login")
