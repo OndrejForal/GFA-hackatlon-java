@@ -78,7 +78,6 @@ public class HomeController extends BaseController{
 
     @GetMapping("/quiz")
     public String getQuiz(Model m) {
-        index = 0;
         if (q.size() != 0){
             m.addAttribute("quizz",q.get(index));
             return "quiz";
@@ -90,6 +89,7 @@ public class HomeController extends BaseController{
     public RedirectView getQuiz(Model m, Integer point){
         index ++;
         if (index >= q.size()){
+            index = 0;
             return new RedirectView("/result");
         }
         return new RedirectView("quiz");
