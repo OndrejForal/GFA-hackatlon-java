@@ -78,6 +78,16 @@ public class HomeController extends BaseController {
         return "register";
     }
 
+    @GetMapping("/reddit")
+    public String reddit() {
+        return "reddit";
+    }
+/*    @PostMapping("/reddit")
+    public String reddit(String post){
+        Optional<AppUser> ap = masterService.findUser(getUserId());
+
+    }*/
+
     @PostMapping("/register")
     public String createUser(@Valid @ModelAttribute CreateUserDTO userDTO) {
         masterService.createUser(userDTO);
