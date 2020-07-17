@@ -68,17 +68,7 @@ public class HomeController extends BaseController{
 
     }
 
-    @GetMapping("/register")
-    public String registration(Model model) {
-      
-        return "register";
-    }
-
-    @PostMapping("/register")
-    public String registration(@ModelAttribute("userForm") CreateUserDTO userForm, BindingResult bindingResult) {
-        masterService.createUser(userForm);
-        return "redirect:/index";
-    }
+    
 
     @GetMapping("/quiz")
     public String getQuiz(Model m) {
