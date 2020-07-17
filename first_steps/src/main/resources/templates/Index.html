@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <!-- Required meta tags -->
@@ -8,7 +9,14 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <!-- CSS -->
+<<<<<<< HEAD
   <link rel="stylesheet" href="../static/Style.css">
+=======
+
+    <link href="/css/Style.css" rel="stylesheet" type="text/css" >
+    <link th:href="@{/css/Style.css}" type="text/css" rel="stylesheet"/>
+
+>>>>>>> 872025cbbabfbfaa2f75de7c75e40b1b3aefada3
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;900&display=swap" rel="stylesheet">
 
@@ -50,10 +58,19 @@
     </ul>
     </div>
     <div class="d-flex justify-content-center">
+<<<<<<< HEAD
       <a href="register.html"><button class="quiz-button btn btn-warning btn-lg"><h3></h3><span>Start quiz</span></h3></button></a>
     </div>
     </div>
+=======
+>>>>>>> 872025cbbabfbfaa2f75de7c75e40b1b3aefada3
 
+        <form metho="get" action="/quiz">
+      <button class="quiz-button btn btn-warning btn-lg" ><h3><span>Start quiz</span></h3></button>
+        </form>
+
+    </div>
+  </div>
   </section>
 
   <!-- Optional JavaScript -->
