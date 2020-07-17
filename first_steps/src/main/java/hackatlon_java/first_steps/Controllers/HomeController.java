@@ -50,7 +50,10 @@ public class HomeController {
 
     @GetMapping("/quiz")
     public String getQuiz(Model m) {
-        m.addAttribute("quizz",q.get(index));
+        if (q.size() != 0){
+            m.addAttribute("quizz",q.get(index));
+            return "quiz";
+        }
         return "quiz";
     }
 
@@ -58,7 +61,7 @@ public class HomeController {
     public RedirectView getQuiz(Model m, int point){
         index ++;
 
-        if (index == q.size()){
+        if (index >= q.size()){
             return new RedirectView("/result");
         }
         return new RedirectView("quiz");
