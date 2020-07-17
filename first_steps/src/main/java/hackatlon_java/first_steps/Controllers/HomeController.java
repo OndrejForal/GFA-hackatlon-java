@@ -30,7 +30,7 @@ public class HomeController {
     private MasterService masterService;
     private UserDetailsService userDetailsService;
     private final QuestionService questionService;
-    private ArrayList<QuestionDTO> q;
+    private static ArrayList<QuestionDTO> q;
 
 
     @Autowired
@@ -38,18 +38,14 @@ public class HomeController {
         this.authenticationManager = authenticate;
         this.masterService = masterService;
         this.userDetailsService = userDetailsService;
-        this.questionService = questionService1;
         q=questionService.getQuestion();
+        this.questionService = questionService;
+        this.q=this.questionService.getQuestion();
     }
 
     @GetMapping("/")
     public String home() {
         return "Index";
-    }
-
-    @GetMapping("index2")
-    public String home2() {
-        return "Index2";
     }
 
     @GetMapping("/login")
