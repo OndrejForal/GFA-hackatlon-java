@@ -78,6 +78,7 @@ public class HomeController extends BaseController{
 
     @GetMapping("/quiz")
     public String getQuiz(Model m) {
+        index = 0;
         if (q.size() != 0){
             m.addAttribute("quizz",q.get(index));
             return "quiz";
