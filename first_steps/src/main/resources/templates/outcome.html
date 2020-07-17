@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
   <!-- Required meta tags -->
@@ -16,6 +16,25 @@
 
 <body>
   <div class="background-matrix">
+
+    <nav class="navbar navbar-dark">
+      <div class="form-inline ml-auto navigation-buttons">
+        <div th:if="${#httpServletRequest.remoteUser != null}">
+      <p th:text="${#httpServletRequest.remoteUser}" class="text-light m-0 mr-2" style="padding: 6px 12px">
+          sample_user
+      </p>
+    </div>
+  <form th:action="@{/logout}" method="post">
+      <button class="btn btn-success" type="submit" value="Log out"/>Log out</button>
+  </form>
+  </div>
+</nav>
+
+    <div>
+      <h2>Your best match is</h2>
+      <h1>{{Result}}</h1>
+      <h2>Congratulations!</h2>
+    </div>
   </div>
 
 

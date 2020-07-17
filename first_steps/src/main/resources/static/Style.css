@@ -8,7 +8,10 @@ h1 {
   color: white;
   font-weight: bold;
   font-size: 4rem;
-  padding: 12% 0 3% 0;
+}
+
+h2 {
+  color: white;
 }
 
 h3 {
@@ -35,8 +38,18 @@ span {
   font-weight: bold;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
 .quiz-button {
   margin-top: 2%;
+}
+
+.navigation-buttons {
+  position: fixed;
+  top: 20px;
+  right: 20px;
 }
 
 #intro {
@@ -61,7 +74,7 @@ span {
 
 
 /* QUIZ (class formatting BEM try) */
-h2 {
+.quiz-heading {
 	color: #222;
 	margin: 3%;
 }
