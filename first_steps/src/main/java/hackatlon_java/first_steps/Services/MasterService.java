@@ -21,4 +21,8 @@ public class MasterService {
         this.appUserRepository = appUserRepository;
     }
 
+    public AppUser getUserByName(String name){
+        return appUserRepository.findByName(name).isPresent() ? appUserRepository.findByName(name).get() : null;
+    }
+
 }
