@@ -95,6 +95,5 @@ public class HomeController extends BaseController{
     @GetMapping("/result")
     public String getResult(){
         return "Index";
-
     }
 }

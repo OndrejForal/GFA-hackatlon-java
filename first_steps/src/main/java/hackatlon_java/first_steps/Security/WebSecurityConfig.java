@@ -29,13 +29,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
+        http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/login", "/register", "/").permitAll()
                 .anyRequest().authenticated().and()
                 .formLogin()
                 .loginPage("/login").permitAll().and().logout()
         .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.ALWAYS);;
+
     }
 
     @Bean
