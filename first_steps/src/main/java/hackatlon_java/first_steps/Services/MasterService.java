@@ -38,5 +38,4 @@ public class MasterService {
     public AppUser getUserByName(String name){
         return appUserRepository.findByName(name).isPresent() ? appUserRepository.findByName(name).get() : null;
     }
-
 }

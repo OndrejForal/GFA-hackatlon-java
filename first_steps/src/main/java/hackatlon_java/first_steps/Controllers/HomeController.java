@@ -25,7 +25,7 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("")
-public class HomeController extends BaseController{
+public class HomeController extends BaseController {
 
     private AuthenticationManager authenticationManager;
     private MasterService masterService;
@@ -41,7 +41,8 @@ public class HomeController extends BaseController{
         this.masterService = masterService;
         this.userDetailsService = userDetailsService;
         this.questionService = questionService;
-        q = this.questionService.getQuestion();
+        q = questionService.getQuestion();
+
     }
 
     @GetMapping("/")
@@ -63,21 +64,20 @@ public class HomeController extends BaseController{
         } catch (InternalAuthenticationServiceException | BadCredentialsException e) {
             return "redirect:login";
         }
-        //final UserDetails userDetails = userDetailsService.loadUserByUsername(loginRequest.getUsername());
-        return "redirect:Index";
 
+        //final UserDetails userDetails = userDetailsService.loadUserByUsername(loginRequest.getUsername());
+
+        return "redirect:Index";
     }
+
 
     
 
     @GetMapping("/quiz")
     public String getQuiz(Model m) {
+        if (q.size() != 0) {
+            m.addAttribute("quizz", q.get(index));
 
-        m.addAttribute("quizz", q.get(index));
-
-        index = 0;
-        if (q.size() != 0){
-            m.addAttribute("quizz",q.get(index));
             return "quiz";
         }
 
@@ -86,14 +86,10 @@ public class HomeController extends BaseController{
 
     @PostMapping("/quiz")
 
-    public RedirectView getQuiz(Model m, Integer point){
-        index ++;
-
-        Optional<AppUser> ap = masterService.findUser(getUserId());
-        masterService.countPoint(point,ap);
-
-        if (index >= q.size()){
-
+    public RedirectView getQuiz(Model m, Integer point) {
+        index++;
+        if (index >= q.size()) {
+            index = 0;
             return new RedirectView("/result");
         }
         return new RedirectView("quiz");
