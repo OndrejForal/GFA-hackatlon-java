@@ -31,4 +31,10 @@ public class Post {
     public Post(){
 
     }
+    public Post(String post, String name) {
+        this.post=post;
+        this.name = name;
+        this.score=1;
+        this.date = LocalDate.now();
+    }
 }

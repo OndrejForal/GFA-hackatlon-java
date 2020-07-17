@@ -35,10 +35,11 @@
                         <th>Date Added</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <td>post</td>
-                        <td>date</td>
+
+                    <tr th:each="item:${posts}">
+                        <td th:text="${item.getPost()}></td>
+                        <td th:text="${item.getPost()}></td>
+
                     </tr>
                     </tbody>
                 </table>
