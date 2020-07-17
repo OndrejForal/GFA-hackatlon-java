@@ -24,7 +24,7 @@ import java.util.ArrayList;
 
 @Controller
 @RequestMapping("")
-public class HomeController extends BaseController{
+public class HomeController extends BaseController {
 
     private AuthenticationManager authenticationManager;
     private MasterService masterService;
@@ -39,9 +39,9 @@ public class HomeController extends BaseController{
         this.authenticationManager = authenticate;
         this.masterService = masterService;
         this.userDetailsService = userDetailsService;
-        q=questionService.getQuestion();
+        q = questionService.getQuestion();
         this.questionService = questionService;
-        this.q=this.questionService.getQuestion();
+        this.q = this.questionService.getQuestion();
     }
 
     @GetMapping("/")
@@ -53,6 +53,7 @@ public class HomeController extends BaseController{
     public String login() {
         return "login";
     }
+
     @PostMapping("/login")
     public String login(@ModelAttribute LoginRequest loginRequest) {
 
@@ -62,7 +63,7 @@ public class HomeController extends BaseController{
         } catch (InternalAuthenticationServiceException | BadCredentialsException e) {
             return "redirect:login";
         }
-        return "redirect:Index" ;
+        return "redirect:Index";
     }
 
     @GetMapping("/register")
@@ -78,17 +79,17 @@ public class HomeController extends BaseController{
 
     @GetMapping("/quiz")
     public String getQuiz(Model m) {
-        if (q.size() != 0){
-            m.addAttribute("quizz",q.get(index));
+        if (q.size() != 0) {
+            m.addAttribute("quizz", q.get(index));
             return "quiz";
         }
         return "quiz";
     }
 
     @PostMapping("/quiz")
-    public RedirectView getQuiz(Model m, Integer point){
-        index ++;
-        if (index >= q.size()){
+    public RedirectView getQuiz(Model m, Integer point) {
+        index++;
+        if (index >= q.size()) {
             index = 0;
             return new RedirectView("/result");
         }
@@ -96,7 +97,7 @@ public class HomeController extends BaseController{
     }
 
     @GetMapping("/result")
-    public String getResult(){
+    public String getResult() {
         return "Index";
     }
 }
