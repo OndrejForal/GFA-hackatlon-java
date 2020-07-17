@@ -22,13 +22,13 @@ public class HomeController {
 
     private final QuestionService questionService;
     private MasterService masterService;
-    private ArrayList<QuestionDTO> q;
+    private static ArrayList<QuestionDTO> q;
 
 
     public HomeController(MasterService masterService, QuestionService questionService) {
         this.masterService = masterService;
         this.questionService = questionService;
-        q=questionService.getQuestion();
+        this.q=this.questionService.getQuestion();
     }
 
     @GetMapping("")
