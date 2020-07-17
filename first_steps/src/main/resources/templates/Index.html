@@ -1,5 +1,5 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
   <!-- Required meta tags -->
@@ -16,6 +16,17 @@
 </head>
 
 <body>
+
+    <div th:if="${#httpServletRequest.remoteUser != null}">
+        <p th:text="${#httpServletRequest.remoteUser}">
+            sample_user
+        </p>
+    </div>
+
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Log out" />
+    </form>
+
   <section id="intro" class="background-matrix">
   <nav class="navbar navbar-dark">
     <form class="form-inline ml-auto">
