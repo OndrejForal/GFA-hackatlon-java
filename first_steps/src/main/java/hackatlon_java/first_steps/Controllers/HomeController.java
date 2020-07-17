@@ -29,7 +29,7 @@ import java.util.ArrayList;
 
 @Controller
 @RequestMapping("")
-public class HomeController {
+public class HomeController extends BaseController{
 
     private AuthenticationManager authenticationManager;
     private MasterService masterService;
@@ -70,6 +70,7 @@ public class HomeController {
         }
         //final UserDetails userDetails = userDetailsService.loadUserByUsername(loginRequest.getUsername());
         return "redirect:Index";
+
     }
 
     @GetMapping("/register")
@@ -92,10 +93,11 @@ public class HomeController {
     }
 
     @PostMapping("/quiz")
-    public RedirectView getQuiz(Model m, int point) {
-        index++;
 
-        if (index == q.size()) {
+    public RedirectView getQuiz(Model m, Integer point){
+        index ++;
+        if (index == q.size()){
+
             return new RedirectView("/result");
         }
         return new RedirectView("quiz");
