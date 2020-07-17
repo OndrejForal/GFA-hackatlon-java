@@ -177,8 +177,27 @@ span {
 }
 
 /* Outcome page */
-.language-img {
+.outcome-page {
+  padding-top: 10%;
+}
+.icon-background {
   height: 150px;
   width: 150px;
-  background-color: yellow;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+}
+
+.icon-background:hover {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.language-img {
+  max-height: 150px;
+  max-width: 150px;
+  }
+
+.result-background {
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  margin: 0.5rem;
 }
