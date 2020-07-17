@@ -71,7 +71,7 @@ public class HomeController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity createUser(@Valid @ModelAttribute CreateUserDTO userDTO) {
+    public ResponseEntity createUser(@Valid @ModelAttribute("user") CreateUserDTO userDTO) {
         masterService.createUser(userDTO);
         return new ResponseEntity("User created", HttpStatus.OK);
     }
