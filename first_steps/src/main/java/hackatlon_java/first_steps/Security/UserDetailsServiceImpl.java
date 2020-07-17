@@ -25,7 +25,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         AppUser currentUser = masterService.getUserByName(username);
         if (currentUser != null) {
-            return new User(currentUser.getName(), currentUser.getPassword(), new ArrayList<>());
+            return buildUserForAuthentication(currentUser, new ArrayList<>());
         }
         throw new UsernameNotFoundException("user not found");
     }

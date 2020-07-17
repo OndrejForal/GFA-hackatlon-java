@@ -46,7 +46,6 @@ public class HomeController extends BaseController {
         this.userDetailsService = userDetailsService;
         this.questionService = questionService;
         q = questionService.getQuestion();
-
     }
 
     @GetMapping("/")
@@ -81,7 +80,7 @@ public class HomeController extends BaseController {
 
     @GetMapping("/reddit")
     public String reddit() {
-        return "reddit";
+    return "reddit";
     }
     @PostMapping("/reddit")
     public String reddit(@ModelAttribute PostDTO post){
@@ -102,18 +101,18 @@ public class HomeController extends BaseController {
     public String getQuiz(Model m) {
         if (q.size() != 0) {
             m.addAttribute("quizz", q.get(index));
-
             return "quiz";
         }
-
         return "quiz";
     }
 
     @PostMapping("/quiz")
-    public RedirectView getQuiz(Model m, Integer point) {
+    public RedirectView getQuiz(Model m, Integer scale) {
         index++;
+        Long x = getUserId();
+
         Optional<AppUser> ap = masterService.findUser(getUserId());
-        masterService.countPoint(point,ap);
+        masterService.countPoint(scale,ap);
 
         if (index >= q.size()) {
             index = 0;
@@ -124,6 +123,10 @@ public class HomeController extends BaseController {
 
     @GetMapping("/result")
     public String getResult() {
-        return "Index";
+        int score = masterService.getScore(masterService.findUser(getUserId()));
+        if (score < 35){
+            return "backend";
+        }
+        return "frontend";
     }
 }

@@ -19,6 +19,10 @@ public class ProfileUser {
     @OneToOne(cascade= CascadeType.ALL)
     private AppUser appUser;
 
+    public ProfileUser(AppUser appUser) {
+         this.appUser = appUser;
+    }
+
     public ProfileUser() {
     }
 
