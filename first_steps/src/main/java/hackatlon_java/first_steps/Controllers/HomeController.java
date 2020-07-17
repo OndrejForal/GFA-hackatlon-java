@@ -24,7 +24,7 @@ import java.util.ArrayList;
 
 @Controller
 @RequestMapping("")
-public class HomeController {
+public class HomeController extends BaseController{
 
     private AuthenticationManager authenticationManager;
     private MasterService masterService;
@@ -62,7 +62,6 @@ public class HomeController {
         } catch (InternalAuthenticationServiceException | BadCredentialsException e) {
             return "redirect:login";
         }
-        //final UserDetails userDetails = userDetailsService.loadUserByUsername(loginRequest.getUsername());
         return "redirect:Index" ;
     }
 
