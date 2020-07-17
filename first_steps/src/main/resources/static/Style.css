@@ -201,3 +201,10 @@ span {
   border-radius: 10px;
   margin: 0.5rem;
 }
+
+/* Tutorial */
+
+.img-tutorial {
+  width: 100%;
+  border-radius: 10px;
+}

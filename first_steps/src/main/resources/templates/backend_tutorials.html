@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- CSS -->
+  <link rel="stylesheet" href="../static/Style.css">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;900&display=swap" rel="stylesheet">
+  <title>Backend tutorials</title>
+</head>
+
+<body>
+  <div class="background-matrix outcome-page">
+    <nav class="navbar navbar-dark">
+      <div class="form-inline ml-auto navigation-buttons">
+        <div th:if="${#httpServletRequest.remoteUser != null}">
+          <p th:text="${#httpServletRequest.remoteUser}" class="text-light m-0 mr-2" style="padding: 6px 12px">
+          sample_user
+          </p>
+        </div>
+        <form th:action="@{/logout}" method="post">
+          <button class="btn btn-success" type="submit" value="Log out"/>Log out</button>
+        </form>
+      </div>
+    </nav>
+
+
+  <div class="container-fluid p-5">
+    <div class="row">
+
+      <div class="col-lg-2 col-md-4 tutorial-link p-4">
+        <h2>Java</h2>
+        <a class="" href="https://www.youtube.com/playlist?list=PLE7E8B7F4856C9B19">
+            <img class="img-tutorial" src="../static/images/Java Derek Banas.png" alt="">
+            <p class="text-light">Java Video Tutorial</p>
+        </a>
+        <a class="" href="https://www.youtube.com/playlist?list=PL59LTecnGM1NRUyune3SxzZlYpZezK-oQ">
+            <img class="img-tutorial" src="../static/images/Java Alex Lee.png" alt="">
+            <p class="text-light">Java Basics 1</p>
+        </a>
+      </div>
+
+      <div class="col-lg-2 col-md-4 tutorial-link p-4">
+        <h2>Python</h2>
+        <a class="" href="https://www.youtube.com/playlist?list=PLTjRvDozrdlxj5wgH4qkvwSOdHLOCx10f">
+            <img class="img-tutorial" src="../static/images/Python Mosh.jpg" alt="">
+            <p class="text-light">Python tutorials</p>
+        </a>
+        <a class="" href="https://www.youtube.com/playlist?list=PLsyeobzWxl7poL9JTVyndKe62ieoN-MZ3">
+            <img class="img-tutorial" src="../static/images/Python Telusko.jpg" alt="">
+            <p class="text-light">Python tutorial for beginners</p>
+        </a>
+      </div>
+
+      <div class="col-lg-2 col-md-4 tutorial-link p-4">
+        <h2>C#</h2>
+        <a class="" href="https://www.youtube.com/playlist?list=PLGLfVvz_LVvRX6xK1oi0reKci6ignjdSa">
+            <img class="img-tutorial" src="../static/images/C_Banas.jpg" alt="">
+            <p class="text-light">C# tutorial</p>
+        </a>
+        <a class="" href="https://www.youtube.com/playlist?list=PLPV2KyIb3jR6ZkG8gZwJYSjnXxmfPAl51">
+            <img class="img-tutorial" src="../static/images/C_Brackleys.jpg" alt="">
+            <p class="text-light">How to programme in C#</p>
+        </a>
+      </div>
+
+      <div class="col-lg-2 col-md-4 tutorial-link p-4">
+        <h2>PHP</h2>
+        <a class="" href="https://www.youtube.com/playlist?list=PLAD6D590A60372CBE">
+            <img class="img-tutorial" src="../static/images/PHP Banas.png" alt="">
+            <p class="text-light">PHP tutorial</p>
+        </a>
+        <a class="" href="https://www.youtube.com/playlist?list=PL4cUxeGkcC9gksOX3Kd9KPo-O68ncT05o">
+            <img class="img-tutorial" src="../static/images/PHP Ninja.png" alt="">
+            <p class="text-light">PHP tutorial for beginners</p>
+        </a>
+      </div>
+
+      <div class="col-lg-2 col-md-4 tutorial-link p-4">
+        <h2>Ruby</h2>
+        <a class="" href="https://www.youtube.com/playlist?list=PLXXGfWVPyOQ42G9M7HF80C1vo-64uDOaw">
+            <img class="img-tutorial" src="../static/images/Ruby CodingTuts.jpg" alt="">
+            <p class="text-light">Ruby for begginers</p>
+        </a>
+        <a class="" href="https://www.youtube.com/playlist?list=PLLAZ4kZ9dFpO90iMas70Tt4_wYjhLGkya">
+            <img class="img-tutorial" src="../static/images/Ruby Mike Dane.jpg" alt="">
+            <p class="text-light">Ruby programming language tutorial</p>
+        </a>
+      </div>
+
+      <div class="col-lg-2 col-md-4 tutorial-link p-4">
+        <h2>Node.js</h2>
+        <a class="" href="https://www.youtube.com/playlist?list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp">
+            <img class="img-tutorial" src="../static/images/Node Ninja.png" alt="">
+            <p class="text-light">Node.js tutorial for begginers</p>
+        </a>
+        <a class="" href="https://www.youtube.com/playlist?list=PLjTsdWerYoeVMM_13kmZv4Ki8QZqknM3c">
+            <img class="img-tutorial" src="../static/images/Node Knowledge.jpg" alt="">
+            <p class="text-light">The complete Node.js developer course</p>
+        </a>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
