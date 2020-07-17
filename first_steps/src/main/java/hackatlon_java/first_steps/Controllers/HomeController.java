@@ -2,12 +2,12 @@ package hackatlon_java.first_steps.Controllers;
 
 import hackatlon_java.first_steps.DTOs.CreateUserDTO;
 import hackatlon_java.first_steps.DTOs.LoginRequest;
+import hackatlon_java.first_steps.Entities.AppUser;
 import hackatlon_java.first_steps.Services.MasterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import hackatlon_java.first_steps.DTOs.QuestionDTO;
 import hackatlon_java.first_steps.Services.QuestionService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -15,16 +15,19 @@ import org.springframework.security.authentication.InternalAuthenticationService
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
 import org.springframework.web.servlet.view.RedirectView;
 import org.springframework.ui.Model;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("")
-public class HomeController extends BaseController{
+public class HomeController extends BaseController {
 
     private AuthenticationManager authenticationManager;
     private MasterService masterService;
@@ -39,9 +42,8 @@ public class HomeController extends BaseController{
         this.authenticationManager = authenticate;
         this.masterService = masterService;
         this.userDetailsService = userDetailsService;
-        q=questionService.getQuestion();
         this.questionService = questionService;
-        this.q=this.questionService.getQuestion();
+        q = questionService.getQuestion();
     }
 
     @GetMapping("/")
@@ -53,6 +55,7 @@ public class HomeController extends BaseController{
     public String login() {
         return "login";
     }
+
     @PostMapping("/login")
     public String login(@ModelAttribute LoginRequest loginRequest) {
 
@@ -62,7 +65,10 @@ public class HomeController extends BaseController{
         } catch (InternalAuthenticationServiceException | BadCredentialsException e) {
             return "redirect:login";
         }
-        return "redirect:Index" ;
+
+        //final UserDetails userDetails = userDetailsService.loadUserByUsername(loginRequest.getUsername());
+
+        return "redirect:Index";
     }
 
     @GetMapping("/register")
@@ -71,32 +77,40 @@ public class HomeController extends BaseController{
     }
 
     @PostMapping("/register")
-    public ResponseEntity createUser(@Valid @ModelAttribute CreateUserDTO userDTO) {
+    public String createUser(@Valid @ModelAttribute CreateUserDTO userDTO) {
         masterService.createUser(userDTO);
-        return new ResponseEntity("User created", HttpStatus.OK);
+        return "login";
     }
+    
 
     @GetMapping("/quiz")
     public String getQuiz(Model m) {
-        index = 0;
-        if (q.size() != 0){
-            m.addAttribute("quizz",q.get(index));
+        if (q.size() != 0) {
+            m.addAttribute("quizz", q.get(index));
             return "quiz";
         }
         return "quiz";
     }
 
     @PostMapping("/quiz")
-    public RedirectView getQuiz(Model m, Integer point){
-        index ++;
-        if (index >= q.size()){
+    public RedirectView getQuiz(Model m, Integer point) {
+        index++;
+        Optional<AppUser> ap = masterService.findUser(getUserId());
+        masterService.countPoint(point,ap);
+
+        if (index >= q.size()) {
+            index = 0;
             return new RedirectView("/result");
         }
         return new RedirectView("quiz");
     }
 
     @GetMapping("/result")
-    public String getResult(){
-        return "Index";
+    public String getResult() {
+        int score = masterService.getScore(masterService.findUser(getUserId()));
+        if (score < 35){
+            return "Index";   // backend
+        }
+        return "Index";  // frontend
     }
 }
