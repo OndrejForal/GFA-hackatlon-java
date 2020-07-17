@@ -2,6 +2,7 @@ package hackatlon_java.first_steps.Controllers;
 
 import hackatlon_java.first_steps.DTOs.CreateUserDTO;
 import hackatlon_java.first_steps.DTOs.LoginRequest;
+import hackatlon_java.first_steps.Entities.AppUser;
 import hackatlon_java.first_steps.Services.MasterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -26,6 +27,7 @@ import org.springframework.ui.Model;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("")
@@ -96,6 +98,8 @@ public class HomeController extends BaseController{
 
     public RedirectView getQuiz(Model m, Integer point){
         index ++;
+        Optional<AppUser> ap = masterService.findUser(getUserId());
+        masterService.countPoint(point,ap);
         if (index == q.size()){
 
             return new RedirectView("/result");
