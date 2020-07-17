@@ -31,5 +31,4 @@ public class CreateUserDTO {
         this.password = password;
     }
 
-    public CreateUserDTO(){    }
 }
