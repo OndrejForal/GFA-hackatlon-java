@@ -1,0 +1,150 @@
+body, html {
+  font-family: 'Montserrat', sans-serif;
+  height: 100%;
+}
+
+/* Index html */
+h1 {
+  color: white;
+  font-weight: bold;
+  font-size: 4rem;
+  padding: 20% 0 3% 0;
+}
+
+h3 {
+  padding: 0;
+  margin: 0;
+}
+
+button {
+  margin: 2px 10px;
+}
+
+ul {
+  font-size: 1.2rem;
+  border-radius: 20px;
+  list-style-type: none;
+  color: white;
+}
+
+li {
+  padding: 5px;
+}
+
+span {
+  font-weight: bold;
+}
+
+.quiz-button {
+  margin-top: 2%;
+}
+
+#intro {
+  padding-top: 0;
+}
+
+/* Register html */
+.background-matrix {
+  background-image: url("images/matrix2.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 15%;
+}
+
+.register-form {
+  background-color: whitesmoke;
+  padding: 3%;
+  border-radius: 10px;
+}
+
+
+/* QUIZ (class formatting BEM try) */
+h2 {
+	color: #222;
+	margin: 3%;
+}
+
+.container {
+	background-color: rgba(200,200,200,.6);
+}
+.main {
+	all: initial;
+	opacity: none;
+}
+.flex {
+	display: flex;
+	flex-wrap: nowrap;
+}
+.main__question {
+	flex-grow: 6;
+	margin-top: 20px;
+}
+.main__radio-group {
+	display: flex;
+	margin-top: 35px;
+	flex-direction: column;
+	align-content: stretch;
+	position: relative;
+	/* border: 1px solid #999; */
+	flex-grow: 1;
+}
+.main__radio-group__item {
+	display: flex;
+	flex-direction: row;
+	align-items: baseline;
+	margin: 0;
+	padding: 7px;
+}
+.main input {
+	padding: 0px;
+}
+.main__radio-group__item__scale {
+	padding-left: 10px;
+	font-size: 1.3em;
+}
+.main button.btn-success {
+	display: block;
+	margin: 15px auto 30px;
+	box-sizing: border-box;
+}
+.main hr {
+	margin: 10px auto;
+	visibility: hidden;
+}
+@media (max-width: 575px) {
+	.main__radio-group__item {
+		border-bottom: 1px solid #333;
+	}
+	.main__radio-group__item:last-child {
+		border: none;
+	}
+}
+
+@media (min-width: 576px) {
+	.main > .flex {
+		flex-direction: column;
+		flex-wrap: nowrap;
+		/* box-sizing: content-box; */
+	}
+
+	.main__radio-group {
+		flex-direction: row;
+	}
+	.main__radio-group__item {
+		flex-direction: column;
+		flex-grow: 2;
+		border-left: 1px solid #333;
+	}
+	.main__radio-group__item:first-child {
+		border: none;
+	}
+	.main__radio-group__item > input {
+		margin: auto;
+	}
+	.main__radio-group__item__scale {
+		padding: 7px 0;
+		margin: auto;
+	}
+}
