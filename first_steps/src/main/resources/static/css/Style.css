@@ -54,7 +54,7 @@ span {
 
 /* Register html */
 .background-matrix {
-  background-image: url("images/matrix2.jpg");
+  background-image: url("../images/matrix2.jpg");
   height: 100%;
   background-position: center;
   background-repeat: no-repeat;
