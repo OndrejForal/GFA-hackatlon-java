@@ -9,4 +9,6 @@ import java.util.Optional;
 @Repository
 public interface IAppUserRepository extends CrudRepository<AppUser,Long> {
     Optional<AppUser>findByName(String name);
+    Optional<AppUser> findById(Long id);
+
 }
