@@ -23,6 +23,7 @@ public class HomeController {
     private final QuestionService questionService;
     private MasterService masterService;
     private static ArrayList<QuestionDTO> q;
+    private int index = 0;
 
 
     public HomeController(MasterService masterService, QuestionService questionService) {
@@ -47,19 +48,24 @@ public class HomeController {
         return new ResponseEntity("User created", HttpStatus.OK);
     }
 
-    @GetMapping("/quiz/{id}")
-    public String getQuiz(@PathVariable Integer id,Model m) {
-        if (id == null){
-            id =0;
-        }
-        m.addAttribute("quizz",q.get((int)id));
+    @GetMapping("/quiz")
+    public String getQuiz(Model m) {
+        m.addAttribute("quizz",q.get(index));
         return "quiz";
     }
 
-    @PostMapping("/quiz/{id}")
-    public RedirectView getQuiz(@RequestParam Integer id,Model m, int point){
-        id ++;
-        return new RedirectView("quiz/{id}");
+    @PostMapping("/quiz")
+    public RedirectView getQuiz(Model m, int point){
+        index ++;
+        
+        if (index == q.size()){
+            return new RedirectView("/result");
+        }
+        return new RedirectView("quiz");
     }
 
+    @GetMapping("/result")
+    public String getResult(){
+        return "Index";
+    }
 }
