@@ -2,7 +2,9 @@ package hackatlon_java.first_steps.Controllers;
 
 import hackatlon_java.first_steps.DTOs.CreateUserDTO;
 import hackatlon_java.first_steps.DTOs.LoginRequest;
+import hackatlon_java.first_steps.DTOs.PostDTO;
 import hackatlon_java.first_steps.Entities.AppUser;
+import hackatlon_java.first_steps.Entities.Post;
 import hackatlon_java.first_steps.Services.MasterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -74,6 +76,20 @@ public class HomeController extends BaseController {
     @GetMapping("/register")
     public String register() {
         return "register";
+    }
+
+    @GetMapping("/reddit")
+    public String reddit(Model model) {
+        var posts = masterService.getPosts();
+        model.addAttribute("posts", posts);
+        return "reddit";
+    }
+    @PostMapping("/reddit")
+    public String reddit(@ModelAttribute PostDTO post){
+        //Optional<AppUser> ap = masterService.findUser(getUserId());
+        Post newPost = new Post(post.post);
+        masterService.savePost(newPost.getPost(),"karel");
+        return "reddit";
     }
 
     @PostMapping("/register")
