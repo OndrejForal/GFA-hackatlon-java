@@ -28,9 +28,13 @@ public class HomeController {
     {
         masterService.createUser(userDTO);
         return new ResponseEntity("User created", HttpStatus.OK);
-
     }
+
+    
+
+
     public HomeController(MasterService masterService){
         this.masterService = masterService;
     }
+
 }
