@@ -86,7 +86,7 @@ public class HomeController extends BaseController{
     }
 
     @PostMapping("/quiz")
-    public RedirectView getQuiz(Model m, int point){
+    public RedirectView getQuiz(Model m, Integer point){
         index ++;
         if (index >= q.size()){
             return new RedirectView("/result");
