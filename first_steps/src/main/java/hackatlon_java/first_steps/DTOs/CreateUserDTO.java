@@ -18,7 +18,6 @@ public class CreateUserDTO {
     public String email;
 
     @NotBlank(message = "Password is required.")
-    @ValidPassword
     public String password;
 
     public CreateUserDTO(String name, String email, String password) {
@@ -26,6 +25,4 @@ public class CreateUserDTO {
         this.email = email;
         this.password = password;
     }
-
-    public CreateUserDTO(){    }
 }
