@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import hackatlon_java.first_steps.DTOs.QuestionDTO;
 import hackatlon_java.first_steps.Services.QuestionService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
@@ -17,15 +15,11 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.servlet.ModelAndView;
+
 import org.springframework.web.servlet.view.RedirectView;
 import org.springframework.ui.Model;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -46,7 +40,6 @@ public class HomeController extends BaseController{
         this.authenticationManager = authenticate;
         this.masterService = masterService;
         this.userDetailsService = userDetailsService;
-
         this.questionService = questionService;
         q = this.questionService.getQuestion();
     }
@@ -77,8 +70,7 @@ public class HomeController extends BaseController{
 
     @GetMapping("/register")
     public String registration(Model model) {
-        model.addAttribute("userForm", new CreateUserDTO());
-
+      
         return "register";
     }
 
@@ -90,7 +82,15 @@ public class HomeController extends BaseController{
 
     @GetMapping("/quiz")
     public String getQuiz(Model m) {
+
         m.addAttribute("quizz", q.get(index));
+
+        index = 0;
+        if (q.size() != 0){
+            m.addAttribute("quizz",q.get(index));
+            return "quiz";
+        }
+
         return "quiz";
     }
 
@@ -98,9 +98,11 @@ public class HomeController extends BaseController{
 
     public RedirectView getQuiz(Model m, Integer point){
         index ++;
+
         Optional<AppUser> ap = masterService.findUser(getUserId());
         masterService.countPoint(point,ap);
-        if (index == q.size()){
+
+        if (index >= q.size()){
 
             return new RedirectView("/result");
         }
@@ -110,6 +112,5 @@ public class HomeController extends BaseController{
     @GetMapping("/result")
     public String getResult() {
         return "Index";
-
     }
 }
