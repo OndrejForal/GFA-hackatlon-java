@@ -30,7 +30,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         throw new UsernameNotFoundException("user not found");
     }
 
-    private User buildUserForAuthentication(AppUser user, List<GrantedAuthority> authorities) {
+    private CurrentUser buildUserForAuthentication(AppUser user, List<GrantedAuthority> authorities) {
         String username = user.getName();
         String password = user.getPassword();
         boolean enabled = true;
@@ -43,5 +43,4 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         currentUser.setId(id);
         return currentUser;
     }
-
 }

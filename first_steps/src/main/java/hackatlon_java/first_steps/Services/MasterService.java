@@ -48,5 +48,4 @@ public class MasterService {
     public Collection<Post> getPosts() {
         return iPostRepository.findTopByScore(10);
     }
-
 }
