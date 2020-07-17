@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import hackatlon_java.first_steps.DTOs.QuestionDTO;
 import hackatlon_java.first_steps.Services.QuestionService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 import org.springframework.ui.Model;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -70,7 +72,16 @@ public class HomeController extends BaseController {
         return "redirect:Index";
     }
 
+    @GetMapping("/register")
+    public String register() {
+        return "register";
+    }
 
+    @PostMapping("/register")
+    public String createUser(@Valid @ModelAttribute CreateUserDTO userDTO) {
+        masterService.createUser(userDTO);
+        return "login";
+    }
     
 
     @GetMapping("/quiz")
@@ -85,9 +96,11 @@ public class HomeController extends BaseController {
     }
 
     @PostMapping("/quiz")
-
     public RedirectView getQuiz(Model m, Integer point) {
         index++;
+        Optional<AppUser> ap = masterService.findUser(getUserId());
+        masterService.countPoint(point,ap);
+
         if (index >= q.size()) {
             index = 0;
             return new RedirectView("/result");

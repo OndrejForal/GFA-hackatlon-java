@@ -24,11 +24,9 @@ public class MasterService {
         return appUserRepository.findById(id);
     }
     public void countPoint(int point, Optional<AppUser> id){
-
         ProfileUser pu = profileUserRepository.findByAppUser(id);
         pu.setTestResult(pu.getTestResult()+point);
         profileUserRepository.save(pu);
-
     }
 
     public MasterService(IAppUserRepository appUserRepository){
