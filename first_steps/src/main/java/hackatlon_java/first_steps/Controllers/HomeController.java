@@ -93,10 +93,12 @@ public class HomeController extends BaseController {
     }
 
     @PostMapping("/quiz")
-    public RedirectView getQuiz(Model m, Integer point) {
+    public RedirectView getQuiz(Model m, Integer scale) {
         index++;
+        Long x = getUserId();
+
         Optional<AppUser> ap = masterService.findUser(getUserId());
-        masterService.countPoint(point,ap);
+        masterService.countPoint(scale,ap);
 
         if (index >= q.size()) {
             index = 0;
@@ -109,8 +111,8 @@ public class HomeController extends BaseController {
     public String getResult() {
         int score = masterService.getScore(masterService.findUser(getUserId()));
         if (score < 35){
-            return "Index";   // backend
+            return "backend";
         }
-        return "Index";  // frontend
+        return "frontend";
     }
 }

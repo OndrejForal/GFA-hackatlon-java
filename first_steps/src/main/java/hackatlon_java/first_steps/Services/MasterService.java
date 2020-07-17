@@ -17,6 +17,8 @@ public class MasterService {
 
     public void createUser(CreateUserDTO userDTO){
         AppUser newUser = new AppUser(userDTO.name, userDTO.password, userDTO.email);
+        ProfileUser profileUser = new ProfileUser(newUser);
+        profileUserRepository.save(profileUser);
         appUserRepository.save(newUser);
     }
 
