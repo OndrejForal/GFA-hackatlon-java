@@ -3,13 +3,14 @@ package hackatlon_java.first_steps.Services;
 import hackatlon_java.first_steps.DTOs.CreateUserDTO;
 import hackatlon_java.first_steps.Entities.AppUser;
 import hackatlon_java.first_steps.Repositories.IAppUserRepository;
-import javassist.NotFoundException;
+import hackatlon_java.first_steps.Repositories.IProfileUserRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 public class MasterService {
 
     private IAppUserRepository appUserRepository;
+    private IProfileUserRepository profileUserRepository;
 
     public void createUser(CreateUserDTO userDTO){
         AppUser newUser = new AppUser(userDTO.name, userDTO.password, userDTO.email);
