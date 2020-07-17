@@ -37,9 +37,10 @@ public class MasterService {
         profileUserRepository.save(pu);
     }
 
-    public MasterService(IAppUserRepository appUserRepository,IPostRepository iPostRepository){
+    public MasterService(IAppUserRepository appUserRepository,IPostRepository iPostRepository, IProfileUserRepository iProfileUserRepository){
         this.appUserRepository = appUserRepository;
         this.iPostRepository=iPostRepository;
+        this.profileUserRepository = iProfileUserRepository;
     }
 
     public AppUser getUserByName(String name){
