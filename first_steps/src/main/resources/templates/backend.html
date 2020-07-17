@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- CSS -->
+  <link rel="stylesheet" href="../static/Style.css">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;900&display=swap" rel="stylesheet">
+  <title>Developer guide</title>
+</head>
+
+<body>
+  <div class="background-matrix outcome-page">
+
+    <nav class="navbar navbar-dark">
+      <div class="form-inline ml-auto navigation-buttons">
+        <div th:if="${#httpServletRequest.remoteUser != null}">
+      <p th:text="${#httpServletRequest.remoteUser}" class="text-light m-0 mr-2" style="padding: 6px 12px">
+          sample_user
+      </p>
+    </div>
+  <form th:action="@{/logout}" method="post">
+      <button class="btn btn-success" type="submit" value="Log out"/>Log out</button>
+  </form>
+  </div>
+</nav>
+<div class="container-fluid pl-5 pr-5">
+<div class="row">
+    <div class="col-lg-5 result-background p-6">
+      <h2>Your best match is</h2>
+      <h1 class="pt-2 pb-2">Back End</h1>
+      <h2>Congratulations!</h2>
+      <p class="pt-4" contextmenu=""style="color: white">
+        Great job! You´ve taken the first step towards becoming a programmer! Well, maybe... Possibly. This is just the beginning of the long but fascinating journey you´d need to undergo to really become a programmer.
+According to what you´ve shared with us, we have the feeling that back end development might be the thing for you.
+But what exactly does a back-end developer do? Well, imagine a web page. Back end developer takes care of how a website works. He may work on managing the database, as well as the site’s users, security, and site performance issues. <br>We wish you luck!
+      </p>
+    </div>
+    <div class="col-lg-6 row justify-content-between pl-5 pr-5">
+
+      <div class="m-3 col-lg-3">
+        <a href="java.html">
+          <div class="icon-background text-center">
+            <img class="language-img p-2" src="../static/images/java.png" alt="java-logo">
+          </div>
+        </a>
+      </div>
+      <div class="m-3 col-lg-3">
+        <a href="Csharp.html">
+          <div class="icon-background text-center">
+            <img class="language-img p-2" src="../static/images/Csharp.png" alt="C#-logo">
+          </div>
+        </a>
+      </div>
+      <div class="m-3 col-lg-3">
+        <a href="python.html">
+          <div class="icon-background text-center">
+            <img class="language-img p-2" src="../static/images/python.png" alt="python-logo">
+          </div>
+        </a>
+      </div>
+      <div class="m-3 col-lg-3">
+        <a href="ruby.html">
+          <div class="icon-background text-center">
+            <img class="language-img p-2" src="../static/images/ruby.png" alt="ruby-logo">
+          </div>
+        </a>
+      </div>
+      <div class="m-3 col-lg-3">
+        <a href="php.html">
+          <div class="icon-background text-center">
+            <img class="language-img p-2" src="../static/images/php.png" alt="php-logo">
+          </div>
+        </a>
+      </div>
+      <div class="m-3 col-lg-3">
+        <a href="node.html">
+          <div class="icon-background text-center">
+            <img class="language-img p-2" src="../static/images/node.png" alt="node-logo">
+          </div>
+        </a>
+      </div>
+
+    </div>
+
+    </div>
+    </div>
+  </div>
+
+
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>
