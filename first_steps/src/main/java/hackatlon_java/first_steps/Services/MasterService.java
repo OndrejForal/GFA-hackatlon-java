@@ -4,6 +4,8 @@ import hackatlon_java.first_steps.DTOs.CreateUserDTO;
 import hackatlon_java.first_steps.Entities.AppUser;
 import hackatlon_java.first_steps.Repositories.IAppUserRepository;
 import hackatlon_java.first_steps.Repositories.IProfileUserRepository;
+import javassist.NotFoundException;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,6 +21,10 @@ public class MasterService {
 
     public MasterService(IAppUserRepository appUserRepository){
         this.appUserRepository = appUserRepository;
+    }
+
+    public AppUser getUserByName(String name){
+        return appUserRepository.findByName(name).isPresent() ? appUserRepository.findByName(name).get() : null;
     }
 
 }
