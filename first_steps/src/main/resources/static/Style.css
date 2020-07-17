@@ -8,7 +8,7 @@ h1 {
   color: white;
   font-weight: bold;
   font-size: 4rem;
-  padding: 20% 0 3% 0;
+  padding: 12% 0 3% 0;
 }
 
 h3 {
@@ -50,7 +50,7 @@ span {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  padding-top: 15%;
+  padding-top: 12%;
 }
 
 .register-form {
@@ -67,10 +67,10 @@ h2 {
 }
 
 .container {
-	background-color: rgba(200,200,200,.6);
+	background-color: rgba(200,200,200,.9);
 }
 .main {
-	all: initial;
+	/* all: initial; */
 	opacity: none;
 }
 .flex {
@@ -147,4 +147,7 @@ h2 {
 		padding: 7px 0;
 		margin: auto;
 	}
+  .form-quiz {
+    border-radius: 10px;
+  }
 }
