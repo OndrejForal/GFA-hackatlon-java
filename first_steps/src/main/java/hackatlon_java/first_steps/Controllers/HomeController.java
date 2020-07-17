@@ -78,14 +78,18 @@ public class HomeController extends BaseController{
 
     @GetMapping("/quiz")
     public String getQuiz(Model m) {
-        m.addAttribute("quizz",q.get(index));
+        index = 0;
+        if (q.size() != 0){
+            m.addAttribute("quizz",q.get(index));
+            return "quiz";
+        }
         return "quiz";
     }
 
     @PostMapping("/quiz")
     public RedirectView getQuiz(Model m, Integer point){
         index ++;
-        if (index == q.size()){
+        if (index >= q.size()){
             return new RedirectView("/result");
         }
         return new RedirectView("quiz");
