@@ -15,10 +15,15 @@ import org.springframework.security.authentication.InternalAuthenticationService
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 import org.springframework.ui.Model;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.ArrayList;
 
@@ -39,9 +44,9 @@ public class HomeController {
         this.authenticationManager = authenticate;
         this.masterService = masterService;
         this.userDetailsService = userDetailsService;
-        q=questionService.getQuestion();
+
         this.questionService = questionService;
-        this.q=this.questionService.getQuestion();
+        q = this.questionService.getQuestion();
     }
 
     @GetMapping("/")
@@ -53,6 +58,7 @@ public class HomeController {
     public String login() {
         return "login";
     }
+
     @PostMapping("/login")
     public String login(@ModelAttribute LoginRequest loginRequest) {
 
@@ -63,38 +69,40 @@ public class HomeController {
             return "redirect:login";
         }
         //final UserDetails userDetails = userDetailsService.loadUserByUsername(loginRequest.getUsername());
-        return "redirect:Index" ;
+        return "redirect:Index";
     }
 
     @GetMapping("/register")
-    public String register() {
+    public String registration(Model model) {
+        model.addAttribute("userForm", new CreateUserDTO());
+
         return "register";
     }
 
     @PostMapping("/register")
-    public ResponseEntity createUser(@Valid @ModelAttribute CreateUserDTO userDTO) {
-        masterService.createUser(userDTO);
-        return new ResponseEntity("User created", HttpStatus.OK);
+    public String registration(@ModelAttribute("userForm") CreateUserDTO userForm, BindingResult bindingResult) {
+        masterService.createUser(userForm);
+        return "redirect:/index";
     }
 
     @GetMapping("/quiz")
     public String getQuiz(Model m) {
-        m.addAttribute("quizz",q.get(index));
+        m.addAttribute("quizz", q.get(index));
         return "quiz";
     }
 
     @PostMapping("/quiz")
-    public RedirectView getQuiz(Model m, int point){
-        index ++;
+    public RedirectView getQuiz(Model m, int point) {
+        index++;
 
-        if (index == q.size()){
+        if (index == q.size()) {
             return new RedirectView("/result");
         }
         return new RedirectView("quiz");
     }
 
     @GetMapping("/result")
-    public String getResult(){
+    public String getResult() {
         return "Index";
 
     }
