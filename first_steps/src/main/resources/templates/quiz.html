@@ -9,89 +9,91 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <!-- CSS -->
-  <link rel="stylesheet" href="../Style.css">
+  <link rel="stylesheet" href="../static/Style.css">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;900&display=swap" rel="stylesheet">
+
   <title>Developer quiz</title>
 </head>
 
 <body>
 
-<div class="background-matrix">
+  <div class="background-matrix">
 
-  <div class="container">
-    
-    <form class="main" action="/quiz" method="post">
+    <div class="container form-quiz">
 
-      <div class="flex">
-        <div class="main__question">
-          <h2 th:text="${quizz.getQuestion()}"> </h2>
+      <form class="main" action="" method="">
+
+        <div class="flex pb-4">
+          <div class="main__question">
+            <h2 class="quiz-heading">{{actual-question}}</h2>
+          </div>
+
+          <div class="main__radio-group">
+
+            <label class="main__radio-group__item" for="1">
+              <input type="radio" name="scale" id="1" value="1">
+              <div class="main__radio-group__item__scale">1</div>
+            </label>
+
+            <label class="main__radio-group__item" for="2">
+              <input type="radio" name="scale" id="2" value="2">
+              <div class="main__radio-group__item__scale">2</div>
+            </label>
+
+            <label class="main__radio-group__item" for="3">
+              <input type="radio" name="scale" id="3" value="3">
+              <div class="main__radio-group__item__scale">3</div>
+            </label>
+
+            <label class="main__radio-group__item" for="4">
+              <input type="radio" name="scale" id="4" value="4">
+              <div class="main__radio-group__item__scale">4</div>
+            </label>
+
+            <label class="main__radio-group__item" for="5">
+              <input type="radio" name="scale" id="5" value="5">
+              <div class="main__radio-group__item__scale">5</div>
+            </label>
+
+            <label class="main__radio-group__item" for="6">
+              <input type="radio" name="scale" id="6" value="6">
+              <div class="main__radio-group__item__scale">6</div>
+            </label>
+
+            <label class="main__radio-group__item" for="7">
+              <input type="radio" name="scale" id="7" value="7">
+              <div class="main__radio-group__item__scale">7</div>
+            </label>
+
+            <label class="main__radio-group__item" for="8">
+              <input type="radio" name="scale" id="8" value="8">
+              <div class="main__radio-group__item__scale">8</div>
+            </label>
+
+            <label class="main__radio-group__item" for="9">
+              <input type="radio" name="scale" id="9" value="9">
+              <div class="main__radio-group__item__scale">9</div>
+            </label>
+
+            <label class="main__radio-group__item" for="10">
+              <input type="radio" name="scale" id="10" value="10">
+              <div class="main__radio-group__item__scale">10</div>
+            </label>
+
+          </div>
         </div>
-    
-        <div class="main__radio-group">
-    
-          <label class="main__radio-group__item" for="1">
-            <input type="radio" name="point" id="1" value="1">
-            <div class="main__radio-group__item__scale">1</div>
-          </label>
-    
-          <label class="main__radio-group__item" for="2">
-            <input type="radio" name="point" id="2" value="2">
-            <div class="main__radio-group__item__scale">2</div>
-          </label>
-    
-          <label class="main__radio-group__item" for="3">
-            <input type="radio" name="point" id="3" value="3">
-            <div class="main__radio-group__item__scale">3</div>
-          </label>
-    
-          <label class="main__radio-group__item" for="4">
-            <input type="radio" name="point" id="4" value="4">
-            <div class="main__radio-group__item__scale">4</div>
-          </label>
-    
-          <label class="main__radio-group__item" for="5">
-            <input type="radio" name="point" id="5" value="5">
-            <div class="main__radio-group__item__scale">5</div>
-          </label>
-    
-          <label class="main__radio-group__item" for="6">
-            <input type="radio" name="point" id="6" value="6">
-            <div class="main__radio-group__item__scale">6</div>
-          </label>
-    
-          <label class="main__radio-group__item" for="7">
-            <input type="radio" name="point" id="7" value="7">
-            <div class="main__radio-group__item__scale">7</div>
-          </label>
-    
-          <label class="main__radio-group__item" for="8">
-            <input type="radio" name="point" id="8" value="8">
-            <div class="main__radio-group__item__scale">8</div>
-          </label>
-    
-          <label class="main__radio-group__item" for="9">
-            <input type="radio" name="point" id="9" value="9">
-            <div class="main__radio-group__item__scale">9</div>
-          </label>
-    
-          <label class="main__radio-group__item" for="10">
-            <input type="radio" name="point" id="10" value="10">
-            <div class="main__radio-group__item__scale">10</div>
-          </label>
-          
-        </div>
-      </div>
-      
 
-      <button class="btn btn-success mx-auto" type="submit">Submit</button>
+        <button class="btn btn-success btn-lg mx-auto" type="submit">Next</button>
 
-      <hr>
+        <hr>
 
-    </form>
-    
+      </form>
+
+
+    </div>
 
   </div>
-
-</div>
 
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
