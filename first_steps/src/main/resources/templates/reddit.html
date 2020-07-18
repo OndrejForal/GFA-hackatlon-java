@@ -28,28 +28,14 @@
         <form class="main" action="/reddit" method="post">
 
             <div class="flex pb-4">
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Post</th>
-                        <th>Date Added</th>
-                    </tr>
-                    </thead>
-
-                    <tr th:each="item:${posts}">
-                        <td th:text="${item.getPost()}></td>
-                        <td th:text="${item.getPost()}></td>
-
-                    </tr>
-                    </tbody>
-                </table>
-
-
+                <div class="main__question">
+                    <h2>If you have some questions feel free to ask us</h2>
+                </div>
             </div>
             <div class="form-group m-auto pt-2">
                 <input type="text" name="post" id="post" class="form-control" required/>
             </div>
-            <button class="btn btn-success btn-lg mx-auto" type="submit">submit post</button>
+            <button class="btn btn-success btn-lg mx-auto" type="submit">Submit Question</button>
         </form>
 
 

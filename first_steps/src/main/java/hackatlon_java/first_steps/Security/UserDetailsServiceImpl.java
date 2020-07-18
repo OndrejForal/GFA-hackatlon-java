@@ -43,5 +43,4 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         currentUser.setId(id);
         return currentUser;
     }
-
 }

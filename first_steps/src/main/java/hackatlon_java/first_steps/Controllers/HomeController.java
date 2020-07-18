@@ -79,17 +79,15 @@ public class HomeController extends BaseController {
     }
 
     @GetMapping("/reddit")
-    public String reddit(Model model) {
-        var posts = masterService.getPosts();
-        model.addAttribute("posts", posts);
-        return "reddit";
+    public String reddit() {
+    return "reddit";
     }
     @PostMapping("/reddit")
     public String reddit(@ModelAttribute PostDTO post){
         //Optional<AppUser> ap = masterService.findUser(getUserId());
         Post newPost = new Post(post.post);
         masterService.savePost(newPost.getPost(),"karel");
-        return "reddit";
+        return "Index";
     }
 
     @PostMapping("/register")
